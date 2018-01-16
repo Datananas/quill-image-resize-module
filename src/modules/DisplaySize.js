@@ -50,7 +50,7 @@ export class DisplaySize extends BaseModule {
   getCurrentSize() {
     return [
       this.img.width,
-      Math.round((this.img.width / this.img.naturalWidth) * this.img.naturalHeight),
+      Math.round((this.img.width / this.img.naturalWidth) * this.img.naturalHeight)
     ];
   }
 }
