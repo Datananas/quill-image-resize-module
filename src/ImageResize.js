@@ -94,14 +94,14 @@ export default (Quill) => {
           this.hide();
         }
         // clicked on an image inside the editor
-        this.show(evt.target);
+        this.display(evt.target);
       } else if (this.img) {
         // clicked on a non image
         this.hide();
       }
     }
 
-    show(img) {
+    display(img) {
       // keep track of this img element
       this.img = img;
 
