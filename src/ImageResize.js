@@ -38,7 +38,7 @@ export default (Quill) => {
       document.execCommand('enableObjectResizing', false, 'false');
 
       // respond to clicks inside the editor
-      this.quill.root.addEventListener('click', this.handleClick, false);
+      this.quill.root.addEventListener('click', this.handleClick.bind(this), false);
 
       this.quill.root.parentNode.style.position = this.quill.root.parentNode.style.position || 'relative';
 
