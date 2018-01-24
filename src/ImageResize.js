@@ -46,6 +46,9 @@ export default (Quill) => {
       this.moduleClasses = this.options.modules;
 
       this.modules = [];
+
+      this.onUpdate = this.onUpdate.bind(this);
+      this.checkImage = this.checkImage.bind(this);
     }
 
     initializeModules() {
@@ -84,6 +87,9 @@ export default (Quill) => {
     }
 
     handleClick(evt) {
+      if (this.editorIsDisabled())
+        return this.hide();
+
       if (evt.target && evt.target.tagName && evt.target.tagName.toUpperCase() === 'IMG') {
         if (this.img === evt.target) {
           // we are already focused on this image
@@ -188,12 +194,18 @@ export default (Quill) => {
     }
 
     checkImage(evt) {
-      if (this.img) {
+      if (this.editorIsDisabled()) {
+        this.hide();
+      } else if (this.img) {
         if (evt.keyCode == 46 || evt.keyCode == 8) {
           Quill.find(this.img).deleteAt(0);
         }
         this.hide();
       }
+    }
+
+    editorIsDisabled() {
+      return this.quill.container.classList.contains('ql-disabled');
     }
   }
 
